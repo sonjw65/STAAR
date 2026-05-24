@@ -1,0 +1,16 @@
+{
+    "default": "default.json",
+    "dataset_params": {
+        "dataset_name": "SD"
+    },
+    "model_config": {
+        "dataset_name": "SD",
+        "embed_dim": 32,
+        "num_nodes": 716,
+        "spatial_hidden_dim": 64,
+        "num_regions": 16,
+        "laplacian_pe_dim": 16
+    },
+    "dataset_name": "SD",
+    "ckpt_save_dir": "checkpoints/STAAR/SD"
+}

@@ -1,0 +1,9 @@
+easy-torch==1.3.3
+easydict
+packaging
+setproctitle
+scipy
+numpy==1.24.4
+tqdm==4.67.1
+tensorboard==2.18.0
+pymetis

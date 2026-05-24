@@ -1,0 +1,19 @@
+{
+    "default": "default.json",
+    "dataset_params": {
+        "dataset_name": "CA"
+    },
+    "model_config": {
+        "dataset_name": "CA",
+        "embed_dim": 64,
+        "num_nodes": 8600,
+        "spatial_hidden_dim": 128,
+        "num_regions": 96,
+        "laplacian_pe_dim": 192
+    },
+    "dataset_name": "CA",
+    "ckpt_save_dir": "checkpoints/STAAR/CA",
+    "train_batch_size": 8,
+    "val_batch_size": 8,
+    "test_batch_size": 8
+}

@@ -1,0 +1,19 @@
+{
+    "default": "default.json",
+    "dataset_params": {
+        "dataset_name": "GLA"
+    },
+    "model_config": {
+        "dataset_name": "GLA",
+        "embed_dim": 64,
+        "num_nodes": 3834,
+        "spatial_hidden_dim": 128,
+        "num_regions": 48,
+        "laplacian_pe_dim": 96
+    },
+    "dataset_name": "GLA",
+    "ckpt_save_dir": "checkpoints/STAAR/GLA",
+    "train_batch_size": 32,
+    "val_batch_size": 32,
+    "test_batch_size": 32
+}

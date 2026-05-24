@@ -1,0 +1,16 @@
+{
+    "default": "default.json",
+    "dataset_params": {
+        "dataset_name": "GBA"
+    },
+    "model_config": {
+        "dataset_name": "GBA",
+        "embed_dim": 64,
+        "num_nodes": 2352,
+        "spatial_hidden_dim": 96,
+        "num_regions": 32,
+        "laplacian_pe_dim": 64
+    },
+    "dataset_name": "GBA",
+    "ckpt_save_dir": "checkpoints/STAAR/GBA"
+}

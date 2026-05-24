@@ -1,0 +1,152 @@
+{
+    "model": {
+        "name": "STAAR",
+        "module": "basicts.models.STAAR.arch.staar_arch"
+    },
+    "dataset_params": {
+        "input_len": 12,
+        "output_len": 12,
+        "use_timestamps": true,
+        "memmap": false
+    },
+    "model_config": {
+        "input_len": 12,
+        "output_len": 12,
+        "input_dim": 3,
+        "patch_len": 12,
+        "if_spatial": true,
+        "if_time_in_day": true,
+        "if_day_in_week": true,
+        "num_time_in_day": 96,
+        "num_day_in_week": 7,
+        "tid_hidden_dim": 32,
+        "diw_hidden_dim": 32,
+        "num_inherent_blocks": 3,
+        "num_diffusion_blocks": 3,
+        "num_prediction_blocks": 2,
+        "num_spatio_temporal_attention_heads": 4,
+        "use_gating": true,
+        "dropout": 0.1,
+        "region_assignment_mode": "adaptive",
+        "use_adaptive_region_assignment": true,
+        "assignment_mlp_dropout": 0.1,
+        "assignment_temperature": 0.5,
+        "assignment_blend_start": 0.0,
+        "assignment_blend_end": 0.75,
+        "link_pred_loss_weight": 2.5,
+        "entropy_loss_weight": 10.0,
+        "balance_loss_weight": 10.0
+    },
+    "gpus": "0",
+    "metrics": [
+        "MAE",
+        "MAPE",
+        "RMSE"
+    ],
+    "loss": "MAE",
+    "null_val": 0.0,
+    "norm_each_channel": false,
+    "optimizer_params": {
+        "lr": 0.001,
+        "weight_decay": 0.0001
+    },
+    "num_epochs": 100,
+    "lr_scheduler": {
+        "name": "MultiStepLR",
+        "module": "torch.optim.lr_scheduler"
+    },
+    "lr_scheduler_params": {
+        "milestones": [
+            1,
+            60,
+            90
+        ],
+        "gamma": 0.3
+    },
+    "callbacks": [
+        {
+            "name": "GradientClipping",
+            "module": "basicts.runners.callback.clip_grad",
+            "params": {
+                "max_norm": 10
+            }
+        },
+        {
+            "name": "EarlyStopping",
+            "module": "basicts.runners.callback.early_stopping",
+            "params": {
+                "patience": 20
+            }
+        },
+        {
+            "name": "AddAuxiliaryLoss",
+            "module": "basicts.runners.callback.add_aux_loss",
+            "params": {
+                "losses": [
+                    "aux_loss"
+                ]
+            }
+        }
+    ],
+    "rescale": true,
+    "eval_horizons": [
+        3,
+        6,
+        12
+    ],
+    "train_batch_size": 64,
+    "val_batch_size": 64,
+    "test_batch_size": 64,
+    "train_data_num_workers": 4,
+    "val_data_num_workers": 2,
+    "test_data_num_workers": 2,
+    "train_data_prefetch": true,
+    "val_data_prefetch": true,
+    "test_data_prefetch": true,
+    "train_data_pin_memory": true,
+    "val_data_pin_memory": true,
+    "test_data_pin_memory": true,
+    "taskflow": {
+        "name": "BasicTSForecastingTaskFlow",
+        "module": "basicts.runners.taskflow.forecasting_taskflow",
+        "params": {}
+    },
+    "gpu_num": 1,
+    "seed": 42,
+    "dataset_type": {
+        "name": "BasicTSForecastingDataset",
+        "module": "basicts.data.tsf_dataset"
+    },
+    "null_to_num": 0.0,
+    "scaler": {
+        "name": "ZScoreScaler",
+        "module": "basicts.scaler.z_score_scaler"
+    },
+    "ddp_find_unused_parameters": false,
+    "compile_model": false,
+    "target_metric": "MAE",
+    "best_metric": "min",
+    "num_steps": null,
+    "optimizer": {
+        "name": "Adam",
+        "module": "torch.optim.adam"
+    },
+    "ckpt_save_strategy": null,
+    "finetune_from": null,
+    "strict_load": true,
+    "train_data_shuffle": true,
+    "train_data_collate_fn": null,
+    "val_interval": 1,
+    "val_data_shuffle": false,
+    "val_data_collate_fn": null,
+    "eval_after_train": true,
+    "save_results": false,
+    "tf32": false,
+    "deterministic": false,
+    "cudnn_enabled": true,
+    "cudnn_benchmark": true,
+    "cudnn_determinstic": false,
+    "test_interval": 1,
+    "test_data_shuffle": false,
+    "test_data_collate_fn": null
+}
