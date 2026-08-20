@@ -1,8 +1,8 @@
 # STAAR: Spatio-Temporal Attention over Adaptive Regions for Traffic Forecasting
 
-This repository contains the official implementation of **STAAR**, a traffic forecasting model proposed in the paper **"STAAR: Spatio-Temporal Attention over Adaptive Regions for Traffic Forecasting"**.
+This repository is the official implementation of our **CIKM 2026** paper, **"STAAR: Spatio-Temporal Attention over Adaptive Regions for Traffic Forecasting"**.
 
-**Paper status:** CIKM under review.
+**Paper status:** Accepted at CIKM 2026.
 
 ## Overview
 
@@ -10,9 +10,9 @@ STAAR is designed for scalable large-scale traffic forecasting. Instead of relyi
 
 The model consists of three main components:
 
-- **Inherent Path:** models node-specific temporal patterns with MLP blocks.
-- **Diffusion Path:** models traffic propagation through adaptive region assignment and region-level spatio-temporal attention.
-- **Gated Fusion:** combines node-specific inherent signals and region-level diffusion signals before prediction.
+* **Inherent Path:** models node-specific temporal patterns with MLP blocks.
+* **Diffusion Path:** models traffic propagation through adaptive region assignment and region-level spatio-temporal attention.
+* **Gated Fusion:** combines node-specific inherent signals and region-level diffusion signals before prediction.
 
 Adaptive region assignment uses traffic states and graph-topological information, including Laplacian positional embeddings, to assign each node to multiple regions with normalized weights. The assignment is regularized with link prediction, entropy, and balance losses.
 
@@ -26,10 +26,10 @@ This project is developed based on the [BasicTS](https://github.com/GestaltCogTe
 
 Key implementation files:
 
-- `src/basicts/models/STAAR/arch/staar_arch.py`: STAAR architecture
-- `src/basicts/models/STAAR/config/staar_config.py`: STAAR model configuration
-- `src/train.py`: training entry point
-- `configs/*.json`: dataset-specific experiment configurations
+* `src/basicts/models/STAAR/arch/staar_arch.py`: STAAR architecture
+* `src/basicts/models/STAAR/config/staar_config.py`: STAAR model configuration
+* `src/train.py`: training entry point
+* `configs/*.json`: dataset-specific experiment configurations
 
 ## Installation
 
@@ -43,12 +43,12 @@ pip install -r requirements.txt
 
 The experiments use the LargeST traffic forecasting datasets provided by the BasicTS framework. Download the preprocessed BasicTS datasets from [Google Drive](https://drive.google.com/file/d/1m8jh1z4VNMgQ49DRwywyvYYgs3G5WBsB/view?usp=sharing).
 
-| Dataset | Config | #Nodes |
-| :-- | :-- | --: |
-| SD | `configs/SD.json` | 716 |
-| GBA | `configs/GBA.json` | 2,352 |
-| GLA | `configs/GLA.json` | 3,834 |
-| CA | `configs/CA.json` | 8,600 |
+| Dataset | Config             | #Nodes |
+| :------ | :----------------- | -----: |
+| SD      | `configs/SD.json`  |    716 |
+| GBA     | `configs/GBA.json` |  2,352 |
+| GLA     | `configs/GLA.json` |  3,834 |
+| CA      | `configs/CA.json`  |  8,600 |
 
 Place the datasets under the `datasets` directory in the working directory:
 
@@ -80,16 +80,12 @@ The shared training settings are defined in `configs/default.json`, and each dat
 
 By default, the BasicTS runner evaluates the model after training. The evaluation metrics are:
 
-- MAE
-- RMSE
-- MAPE
+* MAE
+* RMSE
+* MAPE
 
 Evaluation horizons are set to 3, 6, and 12 steps in `configs/default.json`.
 
 ## Citation
 
-The citation information will be updated after the CIKM review process.
-
-## Acknowledgement
-
-This codebase is built on top of [BasicTS](https://github.com/GestaltCogTeam/BasicTS), an open-source time series analysis benchmark and toolkit.
+Citation information will be updated once the CIKM 2026 proceedings are available.
